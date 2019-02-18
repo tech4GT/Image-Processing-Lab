@@ -1,7 +1,7 @@
 import cv2
 import numpy
 
-img = cv2.imread('/Users/tech4GT/Desktop/Images/photo.jpeg')
+img = cv2.imread('./Images/photo.jpeg')
 for x in range(img.shape[0]):
     for y in range(img.shape[1]):
         val = 0.11*img.item(x, y, 0) + 0.59*img.item(x,

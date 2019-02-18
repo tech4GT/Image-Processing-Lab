@@ -4,7 +4,7 @@ import numpy as np
 # Calculate the max and min Intensity in the image
 min = 255
 max = 0
-img = cv2.imread('/Users/tech4GT/Desktop/Images/contrast.jpg')
+img = cv2.imread('./Images/contrast.jpg')
 for x in range(img.shape[0]):
     for y in range(img.shape[1]):
         val = img.item(x, y, 1)

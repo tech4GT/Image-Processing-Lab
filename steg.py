@@ -52,8 +52,8 @@ def convertToImage(array, size):
     return bi
 
 
-img = cv2.imread('/Users/tech4GT/Desktop/Images/IMG_0100.jpg')
-inp = cv2.imread('/Users/tech4GT/Desktop/Images/crop.png')
+img = cv2.imread('./Images/IMG_0100.jpg')
+inp = cv2.imread('./Images/crop.png')
 
 arr = convertToArray(inp)
 

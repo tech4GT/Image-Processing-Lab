@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import math
 
-img = cv2.imread('/Users/tech4GT/Desktop/Images/photo.jpeg')
+img = cv2.imread('./Images/ironman.jpeg')
 
 # get the factor by which to enlarge
 c = int(input("\nEnter the factor by which to zoom\n"))
