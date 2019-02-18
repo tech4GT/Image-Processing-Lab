@@ -15,13 +15,9 @@ for x in range(op.shape[0]):
     for y in range(op.shape[1]):
         for channel in range(3):
             val = img.item(c*x, c*y, channel)
-            # for i in range(c*x, c*x + c):
-            #     for j in range(c*y, c*y + c):
-            #         val += img.item(i, j, channel)
-            # val = round(val/(c*c))
-            # print(val)
             op.itemset((x, y, channel), val)
 
-cv2.imshow('image', op)
+cv2.imshow('input', img)
+cv2.imshow('output', op)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
