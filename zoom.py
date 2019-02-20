@@ -51,8 +51,8 @@ else:
                 for channel in range(3):
                     val = 0
                     if y+c < op.shape[1]:
-                        val = round((op.item(x, y, channel)*dist +
-                                     op.item(x, y+c, channel)*(c-dist))/c)
+                        val = round((op.item(x, y+c, channel)*dist +
+                                     op.item(x, y, channel)*(c-dist))/c)
                     else:
                         val = op.item(x, y, channel)
                     op.itemset((x, y+dist, channel), val)
@@ -64,8 +64,8 @@ else:
                 for channel in range(3):
                     val = 0
                     if x+c < op.shape[0]:
-                        val = round((op.item(x, y, channel)*dist +
-                                     op.item(x+c, y, channel)*(c-dist))/c)
+                        val = round((op.item(x+c, y, channel)*dist +
+                                     op.item(x, y, channel)*(c-dist))/c)
                     else:
                         val = op.item(x, y, channel)
                     op.itemset((x+dist, y, channel), val)
