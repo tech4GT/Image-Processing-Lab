@@ -34,41 +34,28 @@ def convolve(img, cpy, filter, x, y, l):
 
 ip = cv2.imread("./Images/qrcode.jpg")
 imgX = np.zeros((ip.shape[0], ip.shape[1], 1), np.uint8)
-# imgX = np.array([[[50, 50, 10], [50, 50, 10], [50, 50, 10]]]).reshape(3, 3, 1)
+
 for i in range(ip.shape[0]):
     for j in range(ip.shape[1]):
         imgX.itemset((i, j, 0), 0.3*ip.item(i, j, 2) +
                      0.59*ip.item(i, j, 1) +
                      0.11*ip.item(i, j, 0))
 
-imgY = np.copy(imgX)
-
-
-filter_length = 3
+filter_length = 5
 
 cv2.imshow('input', imgX)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
-filterX = np.array([[[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]]).reshape(3, 3, 1)
-filterY = np.array([[[-1, -2, -1], [0, 0, 0], [1, 2, 1]]]).reshape(3, 3, 1)
+filter = np.array([[[-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1], [-1, -1, 24, -1, -1], [
+                  -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]]]).reshape(5, 5, 1)
 
 cpy = np.copy(imgX)
 
 for x in range(imgX.shape[0]):
     for y in range(imgX.shape[1]):
-        convolve(imgX, cpy, filterX, x, y, filter_length)
-
-for x in range(imgY.shape[0]):
-    for y in range(imgY.shape[1]):
-        convolve(imgY, cpy, filterY, x, y, filter_length)
-
-# Calculate angles here using arctan if needed
-for x in range(imgY.shape[0]):
-    for y in range(imgY.shape[1]):
-        imgX.itemset((x, y, 0), abs(imgX.item(x, y, 0)) +
-                     abs(imgY.item(x, y, 0)))
+        convolve(imgX, cpy, filter, x, y, filter_length)
 
 cv2.imshow('output', imgX)
 cv2.waitKey(0)
