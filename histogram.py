@@ -17,9 +17,9 @@ for i in range(ip.shape[0]):
 
 """ My method """
 vals = np.zeros((256), np.uint8)
-for i in range(ip.shape[0]):
-    for j in range(ip.shape[1]):
-        vals[ip.item(i, j, 0)] += 1
+for i in range(img.shape[0]):
+    for j in range(img.shape[1]):
+        vals[img.item(i, j, 0)] += 1
 
 plt.plot(range(0, 256), vals)
 plt.show()
