@@ -46,11 +46,6 @@ imgY = np.copy(imgX)
 
 filter_length = 3
 
-cv2.imshow('input', imgX)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-
 filterX = np.array([[[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]]).reshape(3, 3, 1)
 filterY = np.array([[[-1, -2, -1], [0, 0, 0], [1, 2, 1]]]).reshape(3, 3, 1)
 
@@ -64,12 +59,16 @@ for x in range(imgY.shape[0]):
     for y in range(imgY.shape[1]):
         convolve(imgY, cpy, filterY, x, y, filter_length)
 
-# Calculate angles here using arctan if needed
+angles = []
 for x in range(imgY.shape[0]):
     for y in range(imgY.shape[1]):
         imgX.itemset((x, y, 0), abs(imgX.item(x, y, 0)) +
                      abs(imgY.item(x, y, 0)))
+        angles.append(math.atan2(imgY.item(x, y, 0), imgX.item(x, y, 0)))
+print(angles[1:5])
 
+
+cv2.imshow('input', ip)
 cv2.imshow('output', imgX)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
